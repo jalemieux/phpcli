@@ -1,7 +1,7 @@
 <?php
 /*
- * Simple example on how to use common phpcli functions. 
- * This program prints a simple greeting, based on the arguments. 
+ * Example on how to use the option menu phpcli class. 
+ * This program prints a simple greeting based on the arguments. 
  */
 
 
@@ -17,7 +17,7 @@ use PhpCli\DisplayHelpException;
 // you could use App::getInstance()->* throught out the program , but for simplicity, 
 // we'll be assigning printer and menu to local variables.
 $printer = App::getInstance()->getPrinter();
-$menu = App::getInstance()->getMenu();
+$menu = new OptionMenu();
 
 // one example of the system module function, detecting and enforcing the running user and group
 // useful when dealing with permissions, and ssh keys.

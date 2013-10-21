@@ -1,0 +1,8 @@
+modules:
+  logger: 
+    class: PhpCli\DefaultLogger
+    logfile: '/var/log/phpcli.log'
+    level: 'DEBUG'
+    timezone: 'America/Los_Angeles'
+  printer:
+    class: PhpCli\DefaultPrinter

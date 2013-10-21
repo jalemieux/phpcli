@@ -1,7 +1,7 @@
 <?php
 namespace PhpCli;
 
-class TestPrinter {
+class TestPrinter extends DefaultPrinter {
 	public $msg =array();
 
 	public  function echo_success($msg){

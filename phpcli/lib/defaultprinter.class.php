@@ -1,7 +1,7 @@
 <?php
 namespace PhpCli;
 
-class DefaultPrinter implements Printer {
+class DefaultPrinter {
 	public  function echo_success($msg){
 		printf("%s\n", $msg);
 	}

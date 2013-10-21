@@ -1,7 +1,7 @@
 <?php
 namespace PhpCli;
 
-class LinuxShellPrinter implements Printer {
+class LinuxShellPrinter extends DefaultPrinter {
 	public  function echo_success($msg){
 		$cmd = ". /etc/init.d/functions; echo -n ".escapeshellarg($msg)."; success; echo; ";
 		passthru($cmd, $ret);

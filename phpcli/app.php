@@ -35,17 +35,29 @@ class App {
 App::$VERSION = '0.0.1';
 App::$ROOT_DIR = realpath(dirname(__FILE__) . '/..');
 
+function tag_call_back($value, $tag, $flag){
+	var_dump(func_get_args());
+}
+
+function tag_callback ($value, $tag, $flags) {
+	var_dump(func_get_args()); // debugging
+	return "Hello {$value}";
+}
+
 /**
  * FW dependency injection
  */
-$app_config = parse_ini_file('config/config.ini', true);
+$app_config = yaml_parse(file_get_contents(App::$ROOT_DIR . '/phpcli/config/config.yml'));
 
-$logger_class = $app_config['modules']['logger_class'];
-$printer_class = $app_config['modules']['printer_class'];
-$menu_class = $app_config['modules']['menu_class'];
+$logger_details = $app_config['modules']['logger'];
+$printer_details = $app_config['modules']['printer'];
+
+$logger_class = $logger_details['class'];
+$printer_class = $printer_details['class'];
+
 
 App::getInstance()
-	->setLogger(new $logger_class())
+	->setLogger(new $logger_class($logger_details['logfile'], $logger_details['timezone'], $logger_details['level']))
 	->setPrinter(new $printer_class())
-	->setMenu(new $menu_class())
 	;
+	
