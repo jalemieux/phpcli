@@ -1,7 +1,21 @@
 <?php
 namespace PhpCli;
 
-class DefaultLogger {
+
+class BaseLogger {
+	public abstract function debug($message);
+	
+	public abstract function error($message);
+	
+	public abstract function info($message);
+	
+	public abstract function warning($message);
+	
+	public abstract function log( $message, $level = self::DEBUG);
+}
+
+
+class DefaultLogger extends BaseLogger {
 	private $session_id;
 	private $logfile;
 	
@@ -9,7 +23,7 @@ class DefaultLogger {
 		self::log($msg, Logger::OUTPUT_WRITE);
 	}
 
-	public function __construct($logfile, $time_zone, $level){
+	public function __construct($logfile, $time_zone, $level = null){
 		if (!is_dir(dirname($logfile))){
 			if(!mkdir(dirname($lgofile), "774", true)){
 				throw new LoggerException (dirname($logfile) . " directory doesnt exists and could not be created.");
@@ -35,6 +49,9 @@ class DefaultLogger {
 				break;
 			case 'ERROR':
 				$this->level = self::ERROR;
+				break;
+			default:
+				$this->level = self:DEBUG;
 				break;
 		}
 		

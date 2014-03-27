@@ -3,14 +3,17 @@
 // always include this, loads all phpcli modules.
 include realpath(dirname(__FILE__) . '/../phpcli.inc');
 
+# app container
 use PhpCli\App;
+# linux friendly printer
 use PhpCli\LinuxShellPrinter;
+# handy logger
 use PhpCli\DefaultLogger;
 /*
 * Example on how to use phpcli loaded modules
 *  - logger
 *  - printer
-* This imsple program prints and log 'hello world'.
+* This simple program prints and log 'hello world'.
 */
 
 // By default, PhpCli\DefaultPrinter is loaded by phpcli.
