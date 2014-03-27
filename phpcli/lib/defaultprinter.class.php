@@ -69,4 +69,6 @@ class DefaultPrinter {
 	}
 }
 
+class PrinterException extends \Exception {}
+
 

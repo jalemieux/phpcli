@@ -32,7 +32,7 @@ class App {
 	}
 }
 
-App::$VERSION = '0.0.1';
+App::$VERSION = '0.1.0';
 App::$ROOT_DIR = realpath(dirname(__FILE__) . '/..');
 
 function tag_call_back($value, $tag, $flag){

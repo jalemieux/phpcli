@@ -8,6 +8,11 @@ class LinuxShellPrinter extends DefaultPrinter {
 		return $ret;
 	}
 
+	public function __construct(){
+		if (! file_exists('/etc/init.d/functions')){
+			throw new PrinterException("/etc/init.d/functions is needed but could not be found.");
+		}
+	}
 	public function echo_err($msg){
 		return file_put_contents("php://stderr", "Error: " . $msg . "\n");
 	}

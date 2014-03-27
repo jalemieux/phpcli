@@ -2,7 +2,7 @@
 namespace PhpCli;
 
 
-class BaseLogger {
+abstract class BaseLogger {
 	public abstract function debug($message);
 	
 	public abstract function error($message);
@@ -51,7 +51,7 @@ class DefaultLogger extends BaseLogger {
 				$this->level = self::ERROR;
 				break;
 			default:
-				$this->level = self:DEBUG;
+				$this->level = self::DEBUG;
 				break;
 		}
 		
